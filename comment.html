@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comments</title>
+  <style>
+    body {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      background-color: #333;
+      color: gold;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: black;
+      border-radius: 10px;
+    }
+    .comment-form textarea {
+      width: calc(100% - 22px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid gold;
+      border-radius: 5px;
+      background-color: black;
+      color: gold;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .comment-form button {
+      padding: 10px 20px;
+      background-color: gold;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .comment-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    .comment {
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #333;
+      border-radius: 5px;
+      ;
+      word-wrap: break-word; /* To keep comments inside the box */
+      font-family: monospace;
+    }
+    h1{
+	    font-family: Tahoma;
+	    font-size: 40pt;
+	    margin: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>GM's Lair</h1>
+    <h2>Comments Here</h2>
+    <p>Leave a comments, tell me what kind of bots you like the most.
+        sfw, nsfw, chatbot, or scenarios. you can also request here or smt... 
+        I might consider it.
+    </p>
+    <div class="comment-form">
+      <textarea id="commentInput" rows="4" placeholder="Write your comment here..."></textarea>
+      <button onclick="postComment()">Post Comment</button>
+    </div>
+    <ul class="comment-list" id="commentList"></ul>
+  </div>
+
+  <script>
+   // Load comments from localStorage when the page loads
+window.onload = function() {
+  var comments = JSON.parse(localStorage.getItem('comments')) || [];
+  var commentList = document.getElementById('commentList');
+  comments.forEach(function(commentText) { // Iterate comments in their stored order
+    var li = document.createElement('li');
+    li.className = 'comment';
+    li.innerHTML = '<p>' + commentText.replace(/\n/g, '</p><p>') + '</p>'; // Convert newlines to paragraphs
+    commentList.appendChild(li);
+  });
+};
+
+function postComment() {
+  var commentInput = document.getElementById('commentInput');
+  var commentText = commentInput.value.trim();
+  if (commentText !== '') {
+    var commentList = document.getElementById('commentList');
+    var li = document.createElement('li');
+    li.className = 'comment';
+    li.innerHTML = '<p>' + commentText.replace(/\n/g, '</p><p>') + '</p>'; // Convert newlines to paragraphs
+    commentList.insertBefore(li, commentList.firstChild); // Insert new comment at the beginning
+
+    // Save comment to localStorage
+    var comments = JSON.parse(localStorage.getItem('comments')) || [];
+    comments.push(commentText); // Add new comment at the end
+    localStorage.setItem('comments', JSON.stringify(comments));
+
+    commentInput.value = '';
+  }
+}
+
+  </script>
+</body>
+</html>
