@@ -45,17 +45,18 @@ p {
 
 
 a {
-    color: white; /* Set the color of links to white */
+    color: white; 
     text-decoration: none; /* Remove underline from links */
 }
 a:hover {
-    color: #333; /* Change link color on hover */
+    color: #333; 
 }
 
 
 nav ul {
     list-style-type: none;
     padding: 0;
+    text-align: center; /*hapus klo undo*/
 }
 nav ul li {
     display: inline;
@@ -71,20 +72,23 @@ nav ul li a:hover {
 }
 
 .buttons {
-    margin: auto;
+    margin: 0 auto; /*hapus null if undo*/
     width: 300px;
     display: flex;
     flex-direction: column;
 }
+
+
 .button {
     font-size: large;
     color: #fff;
     background-color: gold;
     border: none;
     border-radius: 5px;
-    padding: 7% 20px;
+    padding: 10% 20px; /*tadi pading nya 7 20*/
     cursor: pointer;
 	margin: 10px;
+    text-align: center; /*dell if undo*/
 }
 .button:hover {
       background-color: orange;
@@ -119,7 +123,6 @@ section {
     align-items: center;
     text-align: center;
     display: flex;
-    
     transition: background-color 0.3s ease;
 }
 .bot-button:hover {
@@ -127,12 +130,44 @@ section {
 }
 
 .picture-row {
-    display: flex; /* Use flexbox to arrange the images in a row */
-    justify-content: center; /* Center the images horizontally */
-    margin-top: 20px; /* Add margin to the top of each row */
+    display: flex;
+    justify-content: center; 
+    margin-top: 20px;
+    flex-wrap: wrap; 
 }
 .picture-row img {
-    margin: 0 10px; /* Add some spacing between each image */
-    max-width: 200px; /* Optional: Set a maximum width for the images */
+    margin: 10px; /* add null if undo */
+    max-width: 100px; /* set to 200 if undo */
+    height: auto;
 }
 
+/* Media Queries for responsive design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .buttons {
+        width: 100%;
+    }
+
+    .bot-buttons-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bot-button {
+        width: 80%;
+        margin: 10px 0;
+    }
+
+    .picture-row {
+        flex-direction: row; 
+        align-items: center;
+    }
+    .picture-row img {
+        max-width: 30%; 
+        margin: 10px 0; 
+    }
+}
