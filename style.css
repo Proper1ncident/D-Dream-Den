@@ -142,7 +142,7 @@ section {
 }
 
 /* Media Queries for responsive design */
-@media (max-width: 768px) {
+@media (max-width: 1080px) {
     .container {
         width: 90%;
         margin: 10px auto;
