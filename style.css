@@ -45,8 +45,10 @@ p {
 
 
 a {
-    color: white; 
+    color: black; 
     text-decoration: none; /* Remove underline from links */
+    font-weight: bold;
+    font-size: large;
 }
 a:hover {
     color: #333; 
@@ -160,6 +162,7 @@ section {
     .bot-button {
         width: 80%;
         margin: 10px 0;
+        padding: 10% 20px;
     }
 
     .picture-row {
@@ -169,5 +172,9 @@ section {
     .picture-row img {
         max-width: 30%; 
         margin: 10px 0; 
+    }
+
+    a{
+        font-size: xx-large;
     }
 }
